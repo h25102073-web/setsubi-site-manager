@@ -1,0 +1,26 @@
+{
+  "name": "設備現場マネージャー",
+  "short_name": "設備現場",
+  "description": "機械設備現場監督のための工程・材料・ToDo管理アプリ",
+  "id": "/",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "display_override": ["window-controls-overlay", "standalone", "minimal-ui"],
+  "orientation": "portrait-primary",
+  "background_color": "#f4f7fa",
+  "theme_color": "#17365d",
+  "lang": "ja",
+  "dir": "ltr",
+  "categories": ["business", "productivity", "utilities"],
+  "icons": [
+    {"src": "/icons/app-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any"},
+    {"src": "/icons/app-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any"},
+    {"src": "/icons/app-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable"}
+  ],
+  "shortcuts": [
+    {"name": "ToDo", "short_name": "ToDo", "url": "/?tab=todo", "icons": [{"src": "/icons/app-192.png", "sizes": "192x192"}]},
+    {"name": "工程", "short_name": "工程", "url": "/?tab=schedule", "icons": [{"src": "/icons/app-192.png", "sizes": "192x192"}]},
+    {"name": "配管材", "short_name": "配管材", "url": "/?tab=materials", "icons": [{"src": "/icons/app-192.png", "sizes": "192x192"}]}
+  ]
+}

@@ -1,0 +1,1 @@
+ALTER TABLE `tasks` ADD `progress` text DEFAULT '前' NOT NULL;

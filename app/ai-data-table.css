@@ -1,0 +1,8 @@
+.aiDataTable{margin:16px 0}
+.aiDataTable>div{overflow-x:auto;border:1px solid #dce6ef;border-radius:13px}
+.aiDataTable table{width:100%;border-collapse:collapse;min-width:470px;background:#fff}
+.aiDataTable th,.aiDataTable td{padding:10px 9px;border-bottom:1px solid #e8eef4;text-align:left;font-size:12px;white-space:nowrap}
+.aiDataTable thead th{background:#17365d;color:#fff}
+.aiDataTable tbody th{color:#246b9f}
+.aiDataTable tr:last-child th,.aiDataTable tr:last-child td{border-bottom:0}
+.aiDataTable>p{font-size:11px;line-height:1.6;color:#687789;background:#f2f5f8;padding:10px;border-radius:10px}

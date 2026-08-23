@@ -1,0 +1,2 @@
+import {and,eq} from "drizzle-orm";import {materials} from "@/db/schema";import {apiError,audit,requireContext,requireEditor} from "@/lib/request-context";
+export async function DELETE(req:Request,{params}:{params:Promise<{id:string}>}){try{const c=await requireContext(req);requireEditor(c);const {id}=await params;await c.db.delete(materials).where(and(eq(materials.id,Number(id)),eq(materials.projectId,c.projectId)));await audit(c,"delete","material",id,"材料を削除");return Response.json({ok:true})}catch(e){return apiError(e)}}
