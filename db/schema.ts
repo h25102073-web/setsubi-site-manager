@@ -16,3 +16,20 @@ export const projectSettings=sqliteTable("project_settings",{projectId:text("pro
 export const auditLogs=sqliteTable("audit_logs",{id:integer("id").primaryKey({autoIncrement:true}),projectId:text("project_id").notNull(),actorEmail:text("actor_email").notNull(),action:text("action").notNull(),entityType:text("entity_type").notNull(),entityId:text("entity_id").notNull().default(""),summary:text("summary").notNull().default(""),beforeJson:text("before_json").notNull().default(""),afterJson:text("after_json").notNull().default(""),createdAt:text("created_at").notNull()},t=>[index("audit_project_idx").on(t.projectId)]);
 export const feedback=sqliteTable("feedback",{id:integer("id").primaryKey({autoIncrement:true}),projectId:text("project_id").notNull(),userEmail:text("user_email").notNull(),category:text("category").notNull().default("改善提案"),screen:text("screen").notNull().default(""),detail:text("detail").notNull(),rating:integer("rating").notNull().default(0),status:text("status").notNull().default("未対応"),createdAt:text("created_at").notNull(),updatedAt:text("updated_at").notNull()},t=>[index("feedback_project_idx").on(t.projectId)]);
 export const knowledgeRevisions=sqliteTable("knowledge_revisions",{id:integer("id").primaryKey({autoIncrement:true}),projectId:text("project_id").notNull(),subject:text("subject").notNull(),category:text("category").notNull(),changeSummary:text("change_summary").notNull(),basisType:text("basis_type").notNull().default("一般的な目安"),sourceUrl:text("source_url").notNull().default(""),checkedAt:text("checked_at").notNull().default(""),actorEmail:text("actor_email").notNull(),createdAt:text("created_at").notNull()},t=>[index("revision_project_idx").on(t.projectId)]);
+
+
+export const subscriptions=sqliteTable("subscriptions",{
+ email:text("email").primaryKey(),
+ plan:text("plan").notNull().default("free"),
+ status:text("status").notNull().default("inactive"),
+ billingInterval:text("billing_interval").notNull().default("month"),
+ stripeCustomerId:text("stripe_customer_id").notNull().default(""),
+ stripeSubscriptionId:text("stripe_subscription_id").notNull().default(""),
+ currentPeriodEnd:text("current_period_end").notNull().default(""),
+ cancelAtPeriodEnd:integer("cancel_at_period_end",{mode:"boolean"}).notNull().default(false),
+ createdAt:text("created_at").notNull(),
+ updatedAt:text("updated_at").notNull()
+},t=>[
+ uniqueIndex("subscription_customer_unique").on(t.stripeCustomerId),
+ uniqueIndex("subscription_stripe_unique").on(t.stripeSubscriptionId)
+]);
