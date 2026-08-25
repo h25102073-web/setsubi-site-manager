@@ -64,6 +64,13 @@
       "when": 1787464066092,
       "tag": "0008_perfect_vulcan",
       "breakpoints": true
+        },
+    {
+      "idx": 9,
+      "version": "6",
+      "when": 1787628120000,
+      "tag": "0009_monetization",
+      "breakpoints": true
     }
   ]
 }
