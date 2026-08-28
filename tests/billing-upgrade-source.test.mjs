@@ -12,14 +12,17 @@ test("FREE upgrade button is mounted directly below the management heading", asy
   );
 });
 
-test("upgrade button uses the existing monthly Checkout API and returned URL", async () => {
+test("billing card switches between Checkout and Portal using returned URLs", async () => {
   const button = await read("app/BillingUpgradeButton.tsx");
   assert.match(button, /fetch\("\/api\/billing\/checkout"/);
   assert.match(button, /method: "POST"/);
   assert.match(button, /body: JSON\.stringify\(\{ interval: "month" \}\)/);
   assert.match(button, /window\.location\.assign\(result\.url\)/);
   assert.match(button, /PROにアップグレード 月980円/);
-  assert.match(button, /if \(active\) setIsFree\(true\)/);
+  assert.match(button, /fetch\("\/api\/billing\/portal", \{ method: "POST" \}\)/);
+  assert.match(button, /契約内容を確認・変更/);
+  assert.match(button, /PROプランをご利用中/);
+  assert.match(button, /if \(active\) setBilling\(\{ isPro: false \}\)/);
 });
 
 test("billing routes contain only the four supported top-level endpoints", async () => {
