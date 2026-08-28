@@ -1,0 +1,18 @@
+html,body{max-width:100%;overflow-x:hidden}.shell{width:100%;max-width:100%;overflow-x:clip}.page{max-width:100%}.page>*{min-width:0;max-width:100%}
+.selectionGate{display:grid;grid-template-columns:1fr;gap:0;margin:14px 0;border:1px solid #dbe6ee;border-radius:12px;overflow:hidden}
+.selectionGate>div{min-width:0;border:0;border-radius:0;border-bottom:1px solid #e1e9ef;padding:11px 12px;display:grid;grid-template-columns:28px minmax(76px,110px) 1fr;align-items:center;gap:8px;background:#fff}
+.selectionGate>div:last-child{border-bottom:0}.selectionGate i{width:24px;height:24px;font-size:10px}.selectionGate span{font-size:11px;margin:0}.selectionGate b{font-size:12px;margin:0;white-space:normal;overflow:visible;text-overflow:clip}
+@media(max-width:700px){
+ .page{width:100%;margin:-24px 0 0;padding-left:14px;padding-right:14px}
+ .pageTitle{padding:42px 2px 16px;align-items:flex-start;gap:12px}
+ .pageTitle>div{min-width:0;flex:1}.pageTitle h2{font-size:23px;line-height:1.25;overflow-wrap:anywhere}.pageTitle p{font-size:11px;line-height:1.5;margin-top:5px}
+ .pageTitle>button{flex:none;padding:11px 13px;min-width:58px;box-shadow:none}
+ .selector{padding:14px;border-radius:16px}.searchGrid{grid-template-columns:1fr}.searchGrid label{font-size:12px}.searchGrid select{font-size:16px;min-height:48px}
+ .results article{display:block;padding:14px}.results article>.grade{display:inline-block;margin-bottom:9px}.results article>div>b{font-size:16px;line-height:1.5}.results article small{font-size:11px;line-height:1.5}.results article p{font-size:12px;line-height:1.7}
+ .selectionGate{display:grid;grid-template-columns:1fr;gap:0;margin:14px 0;border:1px solid #dbe6ee;border-radius:12px;overflow:hidden}
+ .selectionGate>div{min-width:0;border:0;border-radius:0;border-bottom:1px solid #e1e9ef;padding:11px 12px;display:grid;grid-template-columns:28px 88px 1fr;align-items:center;gap:8px;background:#fff}
+ .selectionGate>div:last-child{border-bottom:0}.selectionGate i{width:24px;height:24px;font-size:10px}.selectionGate span{font-size:11px;margin:0}.selectionGate b{font-size:12px;margin:0;white-space:normal;overflow:visible;text-overflow:clip}
+ .conversionAssembly{overflow-x:auto}.catalogLink{display:block;white-space:normal!important;overflow-wrap:anywhere;line-height:1.5;padding:10px}
+ .evidenceLine{flex-wrap:wrap;line-height:1.5}.caution{font-size:11px!important;line-height:1.75!important;padding:12px!important}
+ .waterPipeGuide,.suAPanel,.pitchPanel{overflow:hidden}.waterZoneGrid{grid-template-columns:1fr!important}.pitchTableWrap,.suATableWrap{max-width:100%;overflow-x:auto}
+}

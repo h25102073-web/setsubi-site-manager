@@ -1,0 +1,4 @@
+import type {Metadata,Viewport} from "next";import "./globals.css";import "./features.css";import PwaSetup from "./pwa-setup";
+export const metadata:Metadata={title:"設備現場マネージャー",description:"機械設備現場監督のためのスマホ管理アプリ",applicationName:"設備現場マネージャー",manifest:"/manifest.webmanifest",icons:{icon:[{url:"/favicon.svg",type:"image/svg+xml"},{url:"/icons/app-192.png",sizes:"192x192",type:"image/png"}],apple:[{url:"/icons/apple-touch-icon.png",sizes:"180x180",type:"image/png"}]},appleWebApp:{capable:true,title:"設備現場",statusBarStyle:"black-translucent"},formatDetection:{telephone:false},other:{"codex-preview":"development","mobile-web-app-capable":"yes"}};
+export const viewport:Viewport={themeColor:"#17365d",width:"device-width",initialScale:1,viewportFit:"cover"};
+export default function RootLayout({children}:{children:React.ReactNode}){return <html lang="ja"><body>{children}<PwaSetup/></body></html>}
