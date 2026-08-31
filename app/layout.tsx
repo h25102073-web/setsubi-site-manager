@@ -32,6 +32,9 @@ export const metadata:Metadata={
   follow:true,
   googleBot:{index:true,follow:true,"max-image-preview":"large","max-snippet":-1,"max-video-preview":-1}
  },
+ verification:{
+  google:"bfw-PGO9tY3GWPAQFAOcWFQfRh6fUgR1t4JBJj4LtPM"
+ },
  openGraph:{
   type:"website",
   locale:"ja_JP",
