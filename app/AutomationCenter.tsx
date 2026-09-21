@@ -9,7 +9,7 @@ type SpeechRecognitionLike={lang:string;interimResults:boolean;continuous:boolea
 const DEFAULT_CHECKS=["最新図面・承認図を確認済み","前工程が完了している","スリーブ・インサート・墨出し完了","必要材料が納入済み","職人・必要人工を確保済み","高所作業車・工具・仮設材を確保済み","他業者との干渉・作業重複なし","検査・試験・写真の条件を確認済み"];
 
 function isoOffset(base:string,days:number){if(!base)return "";const d=new Date(base+"T00:00:00");d.setDate(d.getDate()+days);return d.toISOString().slice(0,10)}
-function extractLocation(text:string){const m=text.match(/((?:B?\\d+|地下\\d+|RF|屋上|地上)\\s*F?|\\d+階)[^、。\\s]{0,14}/i);return m?.[0]||""}
+function extractLocation(text:string){const m=text.match(/((?:B?\d+|地下\d+|RF|屋上|地上)\s*F?|\d+階)[^、。\s]{0,14}/i);return m?.[0]||""}
 
 export default function AutomationCenter({onChanged}:{onChanged?:()=>void|Promise<void>}){
  const [checks,setChecks]=useState<ChecklistItem[]>(()=>DEFAULT_CHECKS.map((label,i)=>({id:String(i+1),label,done:false})));
