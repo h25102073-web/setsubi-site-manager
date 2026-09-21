@@ -6,6 +6,7 @@ import MeetingMinutesAi from "./MeetingMinutesAi";
 import InstallationDetailBook from "./InstallationDetailBook";
 import ProcedureVideos from "./ProcedureVideos";
 import ReleaseCenter from "./ReleaseCenter";
+import AutomationCenter from "./AutomationCenter";
 import BillingUpgradeButton from "./BillingUpgradeButton";
 import "./todo-edit.css";
 import "./process-thinking.css";
@@ -67,9 +68,10 @@ type Penetration = {
   status: string;
   note: string;
 };
-type Tab = "home" | "todo" | "schedule" | "materials" | "penetrations" | "coordination" | "meetings" | "support" | "glossary" | "documents" | "equipmentGuide" | "constructionRules" | "equipmentAi" | "calculators" | "meetingMinutes" | "detailBook" | "procedureVideos" | "releaseCenter" | "more";
+type Tab = "home" | "todo" | "schedule" | "materials" | "penetrations" | "coordination" | "meetings" | "support" | "glossary" | "documents" | "equipmentGuide" | "constructionRules" | "equipmentAi" | "calculators" | "meetingMinutes" | "detailBook" | "procedureVideos" | "releaseCenter" | "automation" | "more";
 type Modal = "task" | "schedule" | "material" | "penetration" | null;
 const tools = [
+  "現場自動化",
   "設備AI質問",
   "設備計算ツール",
   "AI議事録",
@@ -1773,6 +1775,7 @@ export default function Home() {
       {tab === "detailBook"&&<InstallationDetailBook/>}
       {tab === "procedureVideos"&&<ProcedureVideos openDetailBook={()=>setTab("detailBook")}/>}
       {tab === "releaseCenter"&&<ReleaseCenter/>}
+      {tab === "automation"&&<AutomationCenter onChanged={load}/>}
       {tab === "coordination" && selectedCoordination && (
         <div className="page coordinationPage">
           <Title cap="ARCHITECTURAL COORDINATION" title="建築取り合い・施工タイミング" sub="仕上げ別に、設備工事の着手時期と建築確認事項を確認" />
@@ -1896,7 +1899,9 @@ export default function Home() {
               <button
                 key={m}
                 onClick={() =>
-                  m === "建築取り合い"
+                  m === "現場自動化"
+                    ? setTab("automation")
+                    : m === "建築取り合い"
                     ? setTab("coordination")
                     : m === "設備AI質問"
                     ? setTab("equipmentAi")
@@ -1927,10 +1932,10 @@ export default function Home() {
                     : flash(`${m}は次の更新で入力機能を追加できます`)
                 }
               >
-                <i>{["AI", "Σ", "録", "図", "▶", "☷", "◎", "⚖", "あ", "✓", "▣", "□", "◇", "▤", "◉", "基", "↑", "?", "↗", "日"][i]}</i>
+                <i>{["⚙", "AI", "Σ", "録", "図", "▶", "☷", "◎", "⚖", "あ", "✓", "▣", "□", "◇", "▤", "◉", "基", "↑", "?", "↗", "日", "日"][i]}</i>
                 <b>{m}</b>
                 <span>
-                  {m === "設備AI質問"?"官公庁・団体・メーカー公式から回答":m === "設備計算ツール"?"数字入力で式・単位・答えを自動計算":m === "AI議事録"?"無音録音・文字起こし・決定事項を整理":m === "設備施工要領図集"?"納まり・施工時期・取り合いを独自図解":m === "施工手順動画"?"施工の流れを動画と手順で確認":m === "必須打合せ資料" ? "置場・搬入・他業者調整" : m === "建築取り合い" ? "施工時期・確認事項" : m === "重量・架台選定" ? "全ねじ径・架台の目安" : m === "工事用語辞典" ? "俗称・写真から検索" : m === "設備機器の仕組み"?"仕組み・接続・周囲の納まり":m === "施工ルール"?"勾配・高さ・据付基準":m === "施工計画書・資料"?"PDF保存・本文検索":m === "区画貫通" ? "管材×壁床から工法を選定" : "管理画面を準備"}
+                  {m === "現場自動化"?"施工前判定・期限逆算・写真音声ToDo":m === "設備AI質問"?"官公庁・団体・メーカー公式から回答":m === "設備計算ツール"?"数字入力で式・単位・答えを自動計算":m === "AI議事録"?"無音録音・文字起こし・決定事項を整理":m === "設備施工要領図集"?"納まり・施工時期・取り合いを独自図解":m === "施工手順動画"?"施工の流れを動画と手順で確認":m === "必須打合せ資料" ? "置場・搬入・他業者調整" : m === "建築取り合い" ? "施工時期・確認事項" : m === "重量・架台選定" ? "全ねじ径・架台の目安" : m === "工事用語辞典" ? "俗称・写真から検索" : m === "設備機器の仕組み"?"仕組み・接続・周囲の納まり":m === "施工ルール"?"勾配・高さ・据付基準":m === "施工計画書・資料"?"PDF保存・本文検索":m === "区画貫通" ? "管材×壁床から工法を選定" : "管理画面を準備"}
                 </span>
               </button>
             ))}
